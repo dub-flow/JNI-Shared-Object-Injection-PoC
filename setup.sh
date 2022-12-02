@@ -3,15 +3,15 @@
 # compile the `LoadLibraryTest.java` file to get the corresponding `.h` file (`LoadLibraryTest.h`)
 javac -h . LoadLibraryTest.java
 
-# rename `LoadLibraryTest.h` to `malicious.h` and move into the `./payload` folder
-rm -f payload/malicious.h
-mv LoadLibraryTest.h payload/malicious.h
+# rename `LoadLibraryTest.h` to `malicious.h`
+rm -f malicious.h
+mv LoadLibraryTest.h alicious.h
 
 # compile `malicious.cpp`
-g++ -c -fPIC -I${JAVA_PATH}/include -I${JAVA_PATH}/include/linux payload/malicious.cpp -o payload/malicious.o
+g++ -c -fPIC -I${JAVA_PATH}/include -I${JAVA_PATH}/include/linux payload/malicious.cpp -o malicious.o
 
 # include the compiled binary into a new `.so` file
-g++ -shared -fPIC -o libsomestuff.so payload/malicious.o -lc
+g++ -shared -fPIC -o libsomestuff.so malicious.o -lc
 
 # compile the Java binary
 javac LoadLibraryTest.java
