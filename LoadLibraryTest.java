@@ -1,5 +1,3 @@
-import java.io.*;
-
 public class LoadLibraryTest {  
     static {
         String libname = "somestuff";
